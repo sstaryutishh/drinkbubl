@@ -36,6 +36,16 @@ function saveBag(value) {
   renderBag();
 }
 el('add').onclick = () => { saveBag(bag + 1); el('drawer').showModal(); };
+const floatingAdd = el('floating-add');
+floatingAdd.onclick = () => el('add').click();
+function updateFloatingAdd() {
+  const isMobile = window.matchMedia('(max-width: 760px)').matches;
+  const nativeButtonTop = el('add').getBoundingClientRect().top;
+  floatingAdd.classList.toggle('is-visible', isMobile && nativeButtonTop > window.innerHeight - 100);
+}
+window.addEventListener('scroll', updateFloatingAdd, { passive: true });
+window.addEventListener('resize', updateFloatingAdd);
 el('bag').onclick = () => el('drawer').showModal();
 el('close').onclick = () => el('drawer').close();
 renderBag();
+updateFloatingAdd();

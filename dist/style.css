@@ -190,3 +190,22 @@ details p { font-size: 12px; line-height: 1.5; }
   .options { gap: 7px; }
   .options button { padding-inline: 8px; font-size: 13px; }
 }
+
+.floating-add { display: none; }
+@media (max-width: 760px) {
+  .floating-add.is-visible {
+    position: fixed;
+    z-index: 20;
+    left: 17px;
+    right: 17px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    display: block;
+    width: calc(100% - 34px);
+    min-height: 58px;
+    background: #111;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    text-align: center;
+  }
+}
