@@ -208,3 +208,15 @@ details p { font-size: 12px; line-height: 1.5; }
   }
   .floating-add.is-visible { visibility: visible; pointer-events: auto; }
 }
+
+.benefit-icons svg {
+  width: 23px;
+  height: 23px;
+  flex: none;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.rating small { text-decoration: none; }

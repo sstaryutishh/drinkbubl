@@ -18,6 +18,22 @@ function showImage(index) {
 }
 thumbnails.forEach((button, index) => button.onclick = () => showImage(index));
 
+const flavorButtons = [...document.querySelectorAll('.options button')];
+flavorButtons.forEach(button => {
+  button.onclick = () => flavorButtons.forEach(option => {
+    const selected = option === button;
+    option.classList.toggle('selected', selected);
+    option.setAttribute('aria-pressed', String(selected));
+  });
+});
+const purchaseCards = [...document.querySelectorAll('.purchase-card')];
+purchaseCards.forEach(card => {
+  card.onchange = () => purchaseCards.forEach(option => {
+    option.classList.toggle('selected', option === card);
+  });
+});
+
+const unitPrice = 32;
 let bag = 0;
 try {
   const saved = Number(localStorage.getItem('drinkbubl-bag'));
@@ -26,7 +42,7 @@ try {
 function renderBag() {
   el('count').textContent = bag;
   el('contents').innerHTML = bag
-    ? `<div class="line"><img src="assets/maker-white.jpg" alt=""><div><strong>Sparkling Water Maker</strong><p>Quantity · ${bag}</p></div><button id="remove">Remove</button></div><div class="line"><strong>Subtotal</strong><strong>$${bag * 99}</strong></div><p class="note">Checkout is coming soon.</p>`
+    ? `<div class="line"><img src="assets/maker-white.jpg" alt=""><div><strong>Toothpaste Bits Fluoride-Free</strong><p>Quantity · ${bag}</p></div><button id="remove">Remove</button></div><div class="line"><strong>Subtotal</strong><strong>$${bag * unitPrice}</strong></div><p class="note">Checkout is coming soon.</p>`
     : '<p>Your bag is empty.</p>';
   if (bag) el('remove').onclick = () => saveBag(0);
 }
