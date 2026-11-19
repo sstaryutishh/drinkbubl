@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sparkling Water Maker | drinkbubl</title>
+  <meta name="description" content="Meet the drinkbubl Sparkling Water Maker for $99.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="announcement" aria-label="Product announcement">
+    <span>MAKE EVERY DAY SPARKLE ✦ THE DRINKBUBL SPARKLING WATER MAKER ✦ $99</span>
+    <span aria-hidden="true">MAKE EVERY DAY SPARKLE ✦ THE DRINKBUBL SPARKLING WATER MAKER ✦ $99</span>
+    <span aria-hidden="true">MAKE EVERY DAY SPARKLE ✦ THE DRINKBUBL SPARKLING WATER MAKER ✦ $99</span>
+  </div>
+  <header class="site-header">
+    <a class="logo" href="#shop" aria-label="drinkbubl home">drinkbubl<span>.</span></a>
+    <nav aria-label="Main navigation"><a href="#shop">SHOP</a><a href="#how">HOW TO USE</a></nav>
+    <button id="bag" class="header-bag" aria-label="Open shopping bag"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 10h22l-1 19H6L5 10Zm7 2V8a4 4 0 0 1 8 0v4"/></svg><span id="count">0</span></button>
+  </header>
+  <main id="shop">
+    <section class="product" aria-label="Sparkling Water Maker">
+      <div class="gallery">
+        <div class="thumbs" aria-label="Product photos">
+          <button aria-label="Show product photo" aria-pressed="true"><img src="assets/maker-white.jpg" alt=""></button>
+          <button aria-label="Show product detail" aria-pressed="false"><img class="thumb-zoom" src="assets/maker-white.jpg" alt=""></button>
+          <button aria-label="Show sparkling water" aria-pressed="false"><img src="assets/pour.jpg" alt=""></button>
+          <button aria-label="Show bottle detail" aria-pressed="false"><img class="thumb-bottle" src="assets/maker.jpg" alt=""></button>
+          <button aria-label="Show serving suggestion" aria-pressed="false"><img class="thumb-glass" src="assets/maker.jpg" alt=""></button>
+        </div>
+        <div class="main-image"><img id="hero" src="assets/maker-white.jpg" alt="Ivory sparkling water maker beside a glass of lemon sparkling water"></div>
+      </div>
+      <div class="info">
+        <h1>Sparkling Water<br>Maker</h1>
+        <div class="rating">Fresh bubbles, whenever you want.</div>
+        <p class="intro">Turn everyday water into sparkling water at home with the drinkbubl Sparkling Water Maker.</p>
+        <div class="benefit-icons" aria-label="Product highlights">
+          <span><b>◌</b> SPARKLE AT HOME</span><span><b>◎</b> EASY TO USE</span>
+          <span><b>◈</b> REUSABLE BOTTLE</span><span><b>✦</b> FRESH AND FIZZY</span>
+        </div>
+        <button id="add" class="add">ADD TO BAG | <span id="total">$99</span></button>
+        <p class="assurance">Demo storefront · Checkout coming soon</p>
+        <div class="details-intro">Your sparkling water starts here</div>
+        <div class="facts"><div class="fact"><strong>WHAT'S INCLUDED</strong><div><span>Sparkling water maker</span><span>Reusable bottle</span></div></div>
+          <div class="fact"><strong>WHY DRINKBUBL</strong><div><span>Make sparkling water at home</span><span>Pour and enjoy it your way</span></div></div>
+          <details><summary>HOW TO USE</summary><p>Fill the bottle with cold water, attach it to the maker, carbonate, then pour and enjoy.</p></details>
+          <details><summary>ABOUT THE MAKER</summary><p>A simple way to make fresh sparkling water at home with a reusable bottle.</p></details>
+        </div>
+      </div>
+    </section>
+    <section id="how" class="how"><div class="how-copy"><h2>How to Use</h2><ol><li><span>Fill the reusable bottle with cold water.</span></li><li><span>Attach the bottle to your sparkling water maker.</span></li><li><span>Carbonate the water until it is just right for you.</span></li><li><span>Pour into a glass, add your favorite garnish, and enjoy.</span></li></ol></div><img src="assets/pour.jpg" alt="Sparkling water poured into a glass with lemon" loading="lazy"></section>
+    <div class="image-strip" aria-label="Sparkling water imagery"><img src="assets/maker.jpg" alt="Sparkling water maker" loading="lazy"><img src="assets/pour.jpg" alt="Sparkling water with lemon" loading="lazy"><img src="assets/maker.jpg" alt="Sparkling water glass" loading="lazy"></div>
+  </main>
+  <footer><a class="logo" href="#shop">drinkbubl<span>.</span></a></footer>
+  <dialog id="drawer"><div class="drawerhead"><h2>Your bag</h2><button id="close" aria-label="Close shopping bag">×</button></div><div id="contents"></div></dialog>
+  <script src="shop.js"></script>
+</body>
+</html>
