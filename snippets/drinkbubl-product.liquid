@@ -1,0 +1,71 @@
+  <main id="shop">
+    <section class="product" aria-label="Sparkling Water Maker">
+      <div class="gallery">
+        <div class="thumbs" aria-label="Product photos">
+          <button aria-label="Show product photo" aria-pressed="true"><img src="{{ 'maker-white.jpg' | asset_url }}" alt=""></button>
+          <button aria-label="Show product detail" aria-pressed="false"><img class="thumb-zoom" src="{{ 'maker-white.jpg' | asset_url }}" alt=""></button>
+          <button aria-label="Show sparkling water" aria-pressed="false"><img src="{{ 'pour.jpg' | asset_url }}" alt=""></button>
+          <button aria-label="Show bottle detail" aria-pressed="false"><img class="thumb-bottle" src="{{ 'maker.jpg' | asset_url }}" alt=""></button>
+          <button aria-label="Show serving suggestion" aria-pressed="false"><img class="thumb-glass" src="{{ 'maker.jpg' | asset_url }}" alt=""></button>
+        </div>
+        <div class="main-image"><img id="hero" src="{{ 'maker-white.jpg' | asset_url }}" alt="Ivory sparkling water maker beside a glass of lemon sparkling water"></div>
+      </div>
+      <div class="info">
+        <h1>Toothpaste Bits<br>Fluoride-Free</h1>
+        <div class="rating"><span aria-label="5 out of 5 stars">★★★★★</span><small>4.9 · <u>22,248 Reviews</u></small></div>
+        <p class="intro">Our best-selling toothpaste alternative, made without harsh chemicals, plastics or fluoride. Contains 5% nano-hydroxyapatite.</p>
+        <div class="benefit-icons" aria-label="Product highlights">
+          <span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M10 3c-4 0-6 3-6 7 0 5 3 7 4 13 .5 3 1.5 5 3 5 2 0 2-5 5-5s3 5 5 5c1.5 0 2.5-2 3-5 1-6 4-8 4-13 0-4-2-7-6-7-3 0-4 2-6 2s-3-2-6-2Z"/></svg> TRUSTED BY DENTISTS</span>
+          <span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="m16 2 4 3 5-.2 1 5 4 4-2 5 .5 5-5 1-3 5-5-2-5 2-3-5-5-1 .5-5-2-5 4-4 1-5 5 .2 4-3Z"/><path d="m11 16 3 3 7-7"/></svg> EASY TO USE</span>
+          <span><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13"/><path d="M7 7 25 25"/></svg> NO HARSH CHEMICALS</span>
+          <span><svg viewBox="0 0 32 32" aria-hidden="true"><rect x="8" y="8" width="16" height="21" rx="2"/><path d="M13 8V4h6v4M12 13v11m4-11v11m4-11v11"/></svg> TSA-APPROVED</span>
+          <span><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M9 15V7a2 2 0 0 1 4 0v9-11a2 2 0 0 1 4 0v11-9a2 2 0 0 1 4 0v10-6a2 2 0 0 1 4 0v9c0 6-4 9-9 9h-2c-5 0-9-4-9-9v-5a2 2 0 0 1 4 0Z"/></svg> PERFECTLY PORTIONED</span>
+          <span><svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="13"/><path d="M4 15h8l2-5 6-2 2-4M15 29l-2-7 5-4 4 2 7-2"/></svg> ZERO-WASTE</span>
+        </div>
+        {% if featured_product == blank %}
+          <div class="options" role="group" aria-label="Flavor"><button type="button" class="selected" aria-pressed="true">Mint</button><button type="button" aria-pressed="false">Mint Charcoal</button><button type="button" aria-pressed="false">Berry Twist</button></div>
+          <div class="purchase-options" role="group" aria-label="Purchase option">
+            <label class="purchase-card selected"><input type="radio" name="purchase" value="subscribe" checked><span><strong>Subscribe and Save</strong><small>✓ 4 Month Supply<br>✓ Satisfaction Guaranteed<br>✓ Pause or Cancel Anytime</small></span><em>Save 33%</em></label>
+            <label class="purchase-card"><input type="radio" name="purchase" value="once"><span>One-Time Purchase</span></label>
+          </div>
+        {% else %}
+          <div class="purchase-options" role="group" aria-label="Purchase option">
+            <label class="purchase-card selected"><input type="radio" name="purchase" value="once" checked><span>One-Time Purchase</span></label>
+          </div>
+        {% endif %}
+        {% if featured_product != blank %}
+          {% assign selected_variant = featured_product.selected_or_first_available_variant %}
+          {% form 'product', featured_product, id: 'drinkbubl-product-form' %}
+            {% if featured_product.has_only_default_variant %}
+              <input type="hidden" name="id" value="{{ selected_variant.id }}">
+            {% else %}
+              <label class="variant-selector" for="variant-id">Choose an option</label>
+              <select id="variant-id" name="id">
+                {% for variant in featured_product.variants %}
+                  <option value="{{ variant.id }}" data-price="{{ variant.price | money | escape }}" {% if variant.id == selected_variant.id %}selected{% endif %} {% unless variant.available %}disabled{% endunless %}>{{ variant.title | escape }} — {{ variant.price | money }}</option>
+                {% endfor %}
+              </select>
+            {% endif %}
+            <input type="hidden" name="quantity" value="1">
+            <button id="add" class="add" type="submit" {% unless selected_variant.available %}disabled{% endunless %}>
+              {% if selected_variant.available %}ADD TO BAG | <span id="total">{{ selected_variant.price | money }}</span>{% else %}SOLD OUT{% endif %}
+            </button>
+          {% endform %}
+        {% else %}
+          <button id="add" class="add" type="button" disabled>ADD TO BAG | <span id="total">$32</span></button>
+        {% endif %}
+        <p class="assurance">30-Day Money-Back Guarantee · Secure Check Out</p>
+        <div class="details-intro">Looking for fluoride?</div>
+        <div class="facts"><div class="fact"><strong>WHAT'S INCLUDED</strong><div><span>248 Bits (4oz)<br>1 Refillable Jar</span><span>4 Month Supply</span></div></div>
+          <div class="fact"><strong>BENEFITS</strong><div><span>Helps Strengthen Teeth<br>Helps Fight Cavities</span><span>Helps Brighten Teeth<br>Freshens Bad Breath</span></div></div>
+          <details><summary>INSTRUCTIONS</summary><p>Place one Bit in your mouth, bite down, brush with a wet toothbrush twice a day, every day.</p></details>
+          <details><summary>CLEAN INGREDIENTS</summary><p>Made without harsh chemicals, plastics or fluoride.</p></details>
+        </div>
+      </div>
+    </section>
+    <section id="how" class="how"><div class="how-copy"><h2>How to Use</h2><ol><li><span>Fill the reusable bottle with cold water.</span></li><li><span>Attach the bottle to your sparkling water maker.</span></li><li><span>Carbonate the water until it is just right for you.</span></li><li><span>Pour into a glass, add your favorite garnish, and enjoy.</span></li></ol></div><img src="{{ 'pour.jpg' | asset_url }}" alt="Sparkling water poured into a glass with lemon" loading="lazy"></section>
+    <div class="image-strip" aria-label="Sparkling water imagery"><img src="{{ 'maker.jpg' | asset_url }}" alt="Sparkling water maker" loading="lazy"><img src="{{ 'pour.jpg' | asset_url }}" alt="Sparkling water with lemon" loading="lazy"><img src="{{ 'maker.jpg' | asset_url }}" alt="Sparkling water glass" loading="lazy"></div>
+  </main>
+  <button id="floating-add" class="floating-add" type="button" {% if featured_product == blank or selected_variant.available == false %}disabled{% endif %}>
+    {% if featured_product != blank and selected_variant.available %}ADD TO BAG | {{ selected_variant.price | money }}{% else %}ADD TO BAG | $32{% endif %}
+  </button>

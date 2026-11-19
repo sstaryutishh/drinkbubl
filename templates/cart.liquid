@@ -1,0 +1,25 @@
+<main class="cart-page">
+  <h1>Your bag</h1>
+  {% if cart.item_count > 0 %}
+    <form action="{{ routes.cart_url }}" method="post">
+      {% for item in cart.items %}
+        <div class="cart-item">
+          {% if item.image %}<img src="{{ item.image | image_url: width: 160 }}" width="80" height="80" alt="{{ item.title | escape }}">{% endif %}
+          <div>
+            <a href="{{ item.url }}">{{ item.product.title | escape }}</a>
+            {% unless item.variant.title == 'Default Title' %}<p>{{ item.variant.title | escape }}</p>{% endunless %}
+            <p>{{ item.final_line_price | money }}</p>
+          </div>
+          <label>Quantity <input type="number" name="updates[]" value="{{ item.quantity }}" min="0"></label>
+          <a href="{{ item.url_to_remove }}">Remove</a>
+        </div>
+      {% endfor %}
+      <p>Subtotal <strong>{{ cart.total_price | money }}</strong></p>
+      <button type="submit" name="update">Update bag</button>
+      <button type="submit" name="checkout">Checkout</button>
+    </form>
+  {% else %}
+    <p>Your bag is empty.</p>
+    <a href="{{ routes.root_url }}">Continue shopping</a>
+  {% endif %}
+</main>

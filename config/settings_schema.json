@@ -1,0 +1,12 @@
+[
+  {
+    "name": "drinkbubl",
+    "settings": [
+      {
+        "type": "product",
+        "id": "featured_product",
+        "label": "Product featured on the home page"
+      }
+    ]
+  }
+]

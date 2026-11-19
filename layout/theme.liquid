@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ page_title | escape }} · {{ shop.name | escape }}</title>
+  {{ 'drinkbubl.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body>
+  <div class="announcement" aria-label="Product announcement">
+    <span>MAKE EVERY DAY SPARKLE ✦ THE DRINKBUBL SPARKLING WATER MAKER</span>
+    <span aria-hidden="true">MAKE EVERY DAY SPARKLE ✦ THE DRINKBUBL SPARKLING WATER MAKER</span>
+    <span aria-hidden="true">MAKE EVERY DAY SPARKLE ✦ THE DRINKBUBL SPARKLING WATER MAKER</span>
+  </div>
+  <header class="site-header">
+    <a class="logo" href="{{ routes.root_url }}" aria-label="drinkbubl home">drinkbubl<span>.</span></a>
+    <nav aria-label="Main navigation"><a href="{{ routes.root_url }}#shop">SHOP</a><a href="{{ routes.root_url }}#how">HOW TO USE</a></nav>
+    <a class="header-bag" href="{{ routes.cart_url }}" aria-label="Open shopping bag"><svg viewBox="0 0 32 32" aria-hidden="true"><path d="M5 10h22l-1 19H6L5 10Zm7 2V8a4 4 0 0 1 8 0v4"/></svg><span>{{ cart.item_count }}</span></a>
+  </header>
+  {{ content_for_layout }}
+  <footer><a class="logo" href="{{ routes.root_url }}">drinkbubl<span>.</span></a></footer>
+  <script src="{{ 'drinkbubl.js' | asset_url }}" defer></script>
+</body>
+</html>
