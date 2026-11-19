@@ -40,8 +40,18 @@ const floatingAdd = el('floating-add');
 floatingAdd.onclick = () => el('add').click();
 function updateFloatingAdd() {
   const isMobile = window.matchMedia('(max-width: 760px)').matches;
-  const nativeButtonTop = el('add').getBoundingClientRect().top;
-  floatingAdd.classList.toggle('is-visible', isMobile && nativeButtonTop > window.innerHeight - 100);
+  if (!isMobile) {
+    floatingAdd.classList.remove('is-visible');
+    return;
+  }
+
+  const nativeButton = el('add').getBoundingClientRect();
+  floatingAdd.style.left = `${nativeButton.left}px`;
+  floatingAdd.style.width = `${nativeButton.width}px`;
+  floatingAdd.style.height = `${nativeButton.height}px`;
+
+  const floatingButtonTop = floatingAdd.getBoundingClientRect().top;
+  floatingAdd.classList.toggle('is-visible', nativeButton.top > floatingButtonTop);
 }
 window.addEventListener('scroll', updateFloatingAdd, { passive: true });
 window.addEventListener('resize', updateFloatingAdd);

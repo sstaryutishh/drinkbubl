@@ -193,19 +193,18 @@ details p { font-size: 12px; line-height: 1.5; }
 
 .floating-add { display: none; }
 @media (max-width: 760px) {
-  .floating-add.is-visible {
+  .floating-add {
     position: fixed;
     z-index: 20;
-    left: 17px;
-    right: 17px;
     bottom: calc(16px + env(safe-area-inset-bottom));
     display: block;
-    width: calc(100% - 34px);
-    min-height: 58px;
+    visibility: hidden;
+    pointer-events: none;
     background: #111;
     color: #fff;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 400;
     text-align: center;
   }
+  .floating-add.is-visible { visibility: visible; pointer-events: auto; }
 }
