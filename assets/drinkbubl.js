@@ -34,6 +34,7 @@ purchaseCards.forEach(card => {
 const variantSelect = document.getElementById('variant-id');
 const nativeAdd = document.getElementById('add');
 const floatingAdd = document.getElementById('floating-add');
+const floatingPurchase = document.getElementById('floating-purchase');
 
 if (variantSelect) {
   variantSelect.addEventListener('change', () => {
@@ -49,15 +50,14 @@ if (nativeAdd && floatingAdd) {
 
   function updateFloatingAdd() {
     if (!window.matchMedia('(max-width: 760px)').matches) {
-      floatingAdd.classList.remove('is-visible');
+      floatingPurchase.classList.remove('is-visible');
       return;
     }
 
     const nativeButton = nativeAdd.getBoundingClientRect();
-    floatingAdd.style.left = `${nativeButton.left}px`;
     floatingAdd.style.width = `${nativeButton.width}px`;
     floatingAdd.style.height = `${nativeButton.height}px`;
-    floatingAdd.classList.toggle('is-visible', nativeButton.top > floatingAdd.getBoundingClientRect().top);
+    floatingPurchase.classList.toggle('is-visible', nativeButton.top > floatingAdd.getBoundingClientRect().top);
   }
 
   window.addEventListener('scroll', updateFloatingAdd, { passive: true });

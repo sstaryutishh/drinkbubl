@@ -53,21 +53,21 @@ function saveBag(value) {
 }
 el('add').onclick = () => { saveBag(bag + 1); el('drawer').showModal(); };
 const floatingAdd = el('floating-add');
+const floatingPurchase = el('floating-purchase');
 floatingAdd.onclick = () => el('add').click();
 function updateFloatingAdd() {
   const isMobile = window.matchMedia('(max-width: 760px)').matches;
   if (!isMobile) {
-    floatingAdd.classList.remove('is-visible');
+    floatingPurchase.classList.remove('is-visible');
     return;
   }
 
   const nativeButton = el('add').getBoundingClientRect();
-  floatingAdd.style.left = `${nativeButton.left}px`;
   floatingAdd.style.width = `${nativeButton.width}px`;
   floatingAdd.style.height = `${nativeButton.height}px`;
 
   const floatingButtonTop = floatingAdd.getBoundingClientRect().top;
-  floatingAdd.classList.toggle('is-visible', nativeButton.top > floatingButtonTop);
+  floatingPurchase.classList.toggle('is-visible', nativeButton.top > floatingButtonTop);
 }
 window.addEventListener('scroll', updateFloatingAdd, { passive: true });
 window.addEventListener('resize', updateFloatingAdd);

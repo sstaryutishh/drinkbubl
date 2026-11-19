@@ -191,22 +191,34 @@ details p { font-size: 12px; line-height: 1.5; }
   .options button { padding-inline: 8px; font-size: 13px; }
 }
 
-.floating-add { display: none; }
+.floating-purchase { display: none; }
 @media (max-width: 760px) {
-  .floating-add {
+  .floating-purchase {
     position: fixed;
     z-index: 20;
-    bottom: calc(16px + env(safe-area-inset-bottom));
+    right: 0;
+    bottom: 0;
+    left: 0;
     display: block;
     visibility: hidden;
     pointer-events: none;
+    padding: 14px 20px calc(16px + env(safe-area-inset-bottom));
+    background: #fff;
+    border-top: 1px solid #ddd;
+  }
+  .floating-purchase.is-visible { visibility: visible; pointer-events: auto; }
+  .floating-add {
+    display: block;
+    width: 100%;
     background: #111;
     color: #fff;
     font-size: 14px;
     font-weight: 400;
     text-align: center;
   }
-  .floating-add.is-visible { visibility: visible; pointer-events: auto; }
+}
+@media (max-width: 600px) {
+  .floating-purchase { padding-inline: 17px; }
 }
 
 .benefit-icons svg {

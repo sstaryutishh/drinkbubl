@@ -66,6 +66,8 @@
     <section id="how" class="how"><div class="how-copy"><h2>How to Use</h2><ol><li><span>Fill the reusable bottle with cold water.</span></li><li><span>Attach the bottle to your sparkling water maker.</span></li><li><span>Carbonate the water until it is just right for you.</span></li><li><span>Pour into a glass, add your favorite garnish, and enjoy.</span></li></ol></div><img src="{{ 'pour.jpg' | asset_url }}" alt="Sparkling water poured into a glass with lemon" loading="lazy"></section>
     <div class="image-strip" aria-label="Sparkling water imagery"><img src="{{ 'maker.jpg' | asset_url }}" alt="Sparkling water maker" loading="lazy"><img src="{{ 'pour.jpg' | asset_url }}" alt="Sparkling water with lemon" loading="lazy"><img src="{{ 'maker.jpg' | asset_url }}" alt="Sparkling water glass" loading="lazy"></div>
   </main>
-  <button id="floating-add" class="floating-add" type="button" {% if featured_product == blank or selected_variant.available == false %}disabled{% endif %}>
-    {% if featured_product != blank and selected_variant.available %}ADD TO BAG | {{ selected_variant.price | money }}{% else %}ADD TO BAG | $32{% endif %}
-  </button>
+  <div id="floating-purchase" class="floating-purchase">
+    <button id="floating-add" class="floating-add" type="button" {% if featured_product == blank or selected_variant.available == false %}disabled{% endif %}>
+      {% if featured_product != blank and selected_variant.available %}ADD TO BAG | {{ selected_variant.price | money }}{% else %}ADD TO BAG | $32{% endif %}
+    </button>
+  </div>
